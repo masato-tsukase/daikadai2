@@ -1,5 +1,23 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Achieve</title>
+    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="normalize.css">
+</head>
+<body>
+  <header>
+    <ul>
+      <li><a href="#">トップページ</a></li>
+      <li><a href="#">お問い合わせ</a></li>
+    </ul>
+  </header>
+</body>
+</html>
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
 <%= form_for(@tweet, url: confirm_tweets_path) do |f| %>
   <% if @tweet.errors.any? %>
     <div id="error_explanation">
@@ -22,8 +40,8 @@
     <p><%= tweet.content %></p>
     <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
     <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
-  <% end %>
    </div>
+   <% end %>
 <% end %>
 </div>
 </div>
