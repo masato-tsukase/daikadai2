@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+<%= form_for(@tweet, url: confirm_tweets_path) do |f| %>
+  <% if @tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @tweet.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+      <% @tweet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.text_field :content, class: 'form-control'%>
+  <br>
+  <%= f.submit 'つぶやく', class: 'btn btn-primary btn-block'%>
+  
+  <% @tweets.each do |tweet| %>
+  <div class="row">
+    <p><%= tweet.content %></p>
+    <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
+    <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+  <% end %>
+   </div>
+<% end %>
+</div>
+</div>
+
+
