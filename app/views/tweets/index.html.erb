@@ -1,32 +1,32 @@
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
-<%= form_for(@tweet, url: confirm_tweets_path) do |f| %>
-  <% if @tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @tweet.errors.count %>件のエラーがあります。</h2>
+    <p class="flash"><%= notice %><%= alert %></p>
+<%= form_for(@tweet) do |f| %>
+  <%= f.error_messages! %>
 
-      <ul>
-      <% @tweet.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
+  <%= f.label :タイトル %>
+  <%= f.text_field :title, class: 'form-control'%>
+　<br>
+  <%= f.label :画像 %>
+  <%= f.file_field :image %>
+　<br>
+  <%= f.label :内容 %>
   <%= f.text_field :content, class: 'form-control'%>
   <br>
-  <%= f.submit 'つぶやく', class: 'btn btn-primary btn-block'%>
-  <p><%= notice %></p>
-  
+  <%= f.submit '投稿する', class: 'btn btn-primary btn-block'%>
+
   <% @tweets.each do |tweet| %>
   <div class="row">
+    <p><%= tweet.title %></p>
+    <p><%= image_tag tweet.image.url, :size => "250x200" %></p>
     <p><%= tweet.content %></p>
+
     <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
     <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+    <% user = User.find(tweet.user_id) %>
+    <p>投稿者:<%= user.name %></p>
    </div>
    <% end %>
 <% end %>
 </div>
 </div>
-
-

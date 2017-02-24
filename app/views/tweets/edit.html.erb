@@ -1,10 +1,17 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
 <%= form_for(@tweet) do |f| %>
+  <%= f.label :タイトル %>
+  <%= f.text_field :title, class: 'form-control'%>
+　<br>
+  <%= f.label :画像 %>
+  <%= f.file_field :image %>
+　<br>
+  <%= f.label :内容 %>
   <%= f.text_field :content, class: 'form-control'%>
   <br>
   <%= f.submit '編集する', class: 'btn btn-primary btn-block'%>
-<% end %>
+  <% end %>
 
 <%= link_to "もどる", tweets_path %>
   </div>
