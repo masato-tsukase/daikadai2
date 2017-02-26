@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tweet, only: [:edit, :update, :destroy]
-  before_action :set_all, only: [:index, :create, :update, :confirm]
+  before_action :set_all, only: [:index]
 
   def index
     if params[:back]
