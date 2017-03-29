@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tweet, only: [:edit, :update, :destroy]
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
   before_action :set_all, only: [:index]
 
   def index
@@ -38,9 +38,9 @@ class TweetsController < ApplicationController
     redirect_to tweets_path
   end
 
-  def confirm
-    @tweet = Tweet.new(tweets_params)
-    render :index if @tweet.invalid?
+  def show
+    @comment = @tweet.comments.build
+    @comments = @tweet.comments
   end
 
   private

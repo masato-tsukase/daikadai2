@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+
+
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, controllers: {
@@ -6,14 +13,15 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
+  resources :users, only: [:index]
+  resources :relationships, only: [:create, :destroy]
+
   get 'tweets/index'
 
   root 'tweets#index'
 
-  resources :tweets, only: [:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      post :confirm
-    end
+  resources :tweets do
+    resources :comments
   end
 
   if Rails.env.development?

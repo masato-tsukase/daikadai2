@@ -17,7 +17,9 @@
 
   <% @tweets.each do |tweet| %>
   <div class="row">
-    <p><%= tweet.title %></p>
+    <%= link_to tweet_path(tweet) do %>
+    <h4><strong><%= tweet.title %></strong></h4>
+    <% end %>
     <p><%= image_tag tweet.image.url, :size => "250x200" %></p>
     <p><%= tweet.content %></p>
 
