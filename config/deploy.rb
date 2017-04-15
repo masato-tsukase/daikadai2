@@ -10,7 +10,7 @@ set :repo_url, 'https://github.com/masato-tsukase/daikadai2.git'
 set :branch, ENV['BRANCH'] || 'master'
 
 # deploy先のディレクトリ。
-set :deploy_to, '/var/www/daikadai'
+set :deploy_to, '/var/www/daikadai2'
 
 # シンボリックリンクをはるフォルダ・ファイル
 set :linked_files, %w{.env config/secrets.yml}
