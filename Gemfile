@@ -75,6 +75,7 @@ gem 'fog'
 gem 'dotenv-rails'
 gem 'unicorn'
 
+gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 
 group :development do
