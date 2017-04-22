@@ -77,6 +77,7 @@ gem 'unicorn'
 
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby
+gem "therubyracer"
 
 group :development do
   gem 'letter_opener_web'
