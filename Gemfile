@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'execjs'
+gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -74,10 +76,6 @@ gem 'omniauth-facebook'
 gem 'fog'
 gem 'dotenv-rails'
 gem 'unicorn'
-
-gem 'execjs'
-gem 'therubyracer', platforms: :ruby
-gem "therubyracer"
 
 group :development do
   gem 'letter_opener_web'
