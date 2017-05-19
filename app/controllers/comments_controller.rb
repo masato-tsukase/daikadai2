@@ -18,6 +18,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+      format.js { render :index }
+    end
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    flash.now[:notice] = '回答を編集しました。'
+    render :index
+  end
+
   private
     # ストロングパラメーター
     def comment_params

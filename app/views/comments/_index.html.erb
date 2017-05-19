@@ -6,7 +6,9 @@
         <p class="left"><%= comment.content %></p>
         <% if current_user.id == comment.user.id %>
           <p class="right">
-            <%= link_to '', edit_tweet_comment_path(tweet, comment), class: "fa fa-pencil-square-o fa-lg" %>
+            <div id="edit_area_<%= comment.id %>">
+            <%= link_to '', edit_tweet_comment_path(tweet, comment), class: "fa fa-pencil-square-o fa-lg", remote: true%>
+            </div>
             <%= link_to '', tweet_comment_path(tweet, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
           </p>
         <% end %>

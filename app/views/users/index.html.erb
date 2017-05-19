@@ -4,7 +4,9 @@
       <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
         <%= profile_img(user) %>
         <%= user.email %>
+        <% unless current_user.id == user.id %>
         <%= render 'follow_form', user: user %>
+        <% end %>
       </div>
   <% end %>
 </div>

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   root 'tweets#index'
 
+  resources :comments
+
   resources :tweets do
     resources :comments
   end
